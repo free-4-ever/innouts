@@ -43,6 +43,7 @@ module.exports = function (ctx) {
       components: [
         'QLayout',
         'QLayoutHeader',
+        'QLayoutFooter',
         'QLayoutDrawer',
         'QPageContainer',
         'QPage',
@@ -50,6 +51,9 @@ module.exports = function (ctx) {
         'QToolbarTitle',
         'QBtn',
         'QBtnDropdown',
+        'QCarousel',
+        'QCarouselSlide',
+        'QCarouselControl',
         'QIcon',
         'QList',
         'QListHeader',
