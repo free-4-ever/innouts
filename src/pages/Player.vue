@@ -39,7 +39,7 @@ export default {
   },
 
   mounted: function () {
-    this.$axios.get('https://innouts.test/api/players/1')
+    this.$axios.get('http://innouts.test/api/players/1')
       .then(response => (this.player = JSON.parse(response.data)))
   }
 }
