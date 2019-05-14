@@ -8,10 +8,10 @@ const routes = [
     ]
   },
   {
-    path: '/players',
+    path: '/players/:id',
     component: () => import('layouts/ID.vue'),
     children: [
-      { path: '', component: () => import('pages/Player.vue') }
+      { path: '', component: () => import('pages/Player.vue'), name: 'player' }
     ]
   }
 ]

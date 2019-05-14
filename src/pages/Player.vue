@@ -65,8 +65,13 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  // name: 'PageName'
+  name: 'PlayerProfile',
+  props: {
+
+  },
   data: () => ({
     columns: [
       {
@@ -74,71 +79,100 @@ export default {
         required: true,
         label: 'Dessert (100g serving)',
         align: 'left',
-        field: 'name',
+        field: 'attribute',
         classes: 'my-class',
-        style: 'width: 200px'
+        style: 'width: 300px'
       },
       {
         name: 'desc',
         required: true,
         label: 'Dessert (100g serving)',
-        align: 'right',
+        align: 'left',
         field: 'info',
         classes: 'my-class',
-        style: 'width: 500px'
+        style: 'width: 300px'
       }
 
     ],
-    tableData: [
-      {
-        name: 'First Name',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: '14%',
-        iron: '1%'
-      },
-      {
-        name: 'Last Name',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: '14%',
-        iron: '1%'
-      },
-      {
-        name: 'Nationality',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: '14%',
-        iron: '1%'
-      },
-      {
-        name: 'Birth',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: '14%',
-        iron: '1%'
-      }
-
-    ],
+    tableData: [],
     ratingModel: 1,
-    player: null
+    player: Object,
+    error: null,
+    // loading: false,
   }),
 
+  beforeRouteEnter (to, from, next) {
+    if (from.name === 'player') {
+      next()
+    } else {
+      axios.get('http://innouts.test/api/players/' + to.params.id)
+        .then(response => {
+          next(vm => {
+            // vm.setData(response.data)
+            vm.error = response.data
+          })
+        })
+        .catch(error => {
+          from.error = error
+          next(false)
+        })
+    }
+  },
+
+  beforeRouteUpdate (to, from, next) {
+    // this.player = null
+    // fetchData(to.params.id, (player) => {
+    //   this.setData(player)
+    // })
+    this.fetchData(to.params.id)
+    next()
+  },
+
   mounted: function () {
-    this.$axios.get('http://innouts.test/api/players/1')
-      .then(response => (this.player = JSON.parse(response.data)))
+    this.tableData = [
+      {
+        attribute: 'First Name',
+        info: this.player.firstName,
+      },
+      {
+        attribute: 'Last Name',
+        info: this.player.lastName,
+      },
+      {
+        attribute: 'Nationality',
+        info: 159,
+      },
+      {
+        attribute: 'Birth',
+        info: 159,
+      }
+    ]
+  },
+
+  // created: function () {
+  //   let vm = this
+  //   vm.$axios.get('http://innouts.test/api/players/' + this.$route.params.id)
+  //     .then(response => (vm.player = response.data))
+  // },
+
+  // watch: {
+  //   '$route' (to, from) {
+  //     this.fetchData(to.params.id)
+  //   }
+  // },
+
+  methods: {
+    fetchData (id) {
+      this.$axios.get('http://innouts.test/api/players/' + id)
+        .then(response => {
+          // this.setData(response.data)
+          this.player = response.data
+        })
+    },
+
+    setData (newP) {
+      this.player = newP
+    }
   }
 }
 </script>

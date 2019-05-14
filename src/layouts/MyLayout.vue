@@ -65,9 +65,9 @@
         inset-delimiter
       >
         <q-list-header>Essential Links</q-list-header>
-        <q-item @click.native="openURL('http://quasar-framework.org')">
-          <q-item-side icon="school" />
-          <q-item-main label="Docs" sublabel="quasar-framework.org" />
+        <q-item to="/players/1">
+          <q-item-side icon="ball" />
+          <q-item-main label="Player" sublabel="quasar-framework.org" />
         </q-item>
         <q-item @click.native="openURL('https://github.com/quasarframework/')">
           <q-item-side icon="code" />
@@ -123,6 +123,7 @@
     </q-layout-drawer>
 
     <q-page-container>
+      <q-ajax-bar />
       <router-view />
     </q-page-container>
 
@@ -140,22 +141,6 @@
           <span slot="subtitle">Subtile</span>
         </q-toolbar-title>
       </q-toolbar>
-      <q-tabs>
-        <q-route-tab
-          slot="title"
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          slot="title"
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
     </q-layout-footer>
   </q-layout>
 </template>
