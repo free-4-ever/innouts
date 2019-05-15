@@ -1,10 +1,10 @@
 <template>
-  <q-page padding>
-    <q-card inline >
+  <q-page padding class="flex flex-center">
+    <q-card inline>
       <div class="row">  <!-- use 'row' class to define a container / parent -->
         <div class="col-sm-4">
-          <div class="row round-borders">
-            <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+          <div class="row">
+            <img alt="Quasar logo" src="~assets/quasar-logo-full.svg" class="q-mx-auto round-borders">
           </div>
           <div class="row">
             <q-rating
@@ -109,7 +109,7 @@ export default {
         .then(response => {
           next(vm => {
             // vm.setData(response.data)
-            vm.error = response.data
+            vm.player = response.data.data
           })
         })
         .catch(error => {
@@ -129,24 +129,25 @@ export default {
   },
 
   mounted: function () {
-    this.tableData = [
-      {
-        attribute: 'First Name',
-        info: this.player.firstName,
-      },
-      {
-        attribute: 'Last Name',
-        info: this.player.lastName,
-      },
-      {
-        attribute: 'Nationality',
-        info: 159,
-      },
-      {
-        attribute: 'Birth',
-        info: 159,
-      }
-    ]
+    this.$emit('setTeammates', ['Joe', 'Bob'])
+    // this.tableData = [
+    //   {
+    //     attribute: 'First Name',
+    //     info: this.player.firstName,
+    //   },
+    //   {
+    //     attribute: 'Last Name',
+    //     info: this.player.lastName,
+    //   },
+    //   {
+    //     attribute: 'Nationality',
+    //     info: 159,
+    //   },
+    //   {
+    //     attribute: 'Birth',
+    //     info: 159,
+    //   }
+    // ]
   },
 
   // created: function () {
@@ -155,11 +156,47 @@ export default {
   //     .then(response => (vm.player = response.data))
   // },
 
-  // watch: {
-  //   '$route' (to, from) {
-  //     this.fetchData(to.params.id)
-  //   }
-  // },
+  watch: {
+    // '$route' (to, from) {
+    //   this.fetchData(to.params.id)
+    // }
+    'player' () {
+      this.tableData = [
+        {
+          attribute: 'First Name',
+          info: this.player.firstName,
+        },
+        {
+          attribute: 'Last Name',
+          info: this.player.lastName,
+        },
+        {
+          attribute: 'Nationality',
+          info: this.player.nationality,
+        },
+        {
+          attribute: 'Birth',
+          info: this.player.birthday.date,
+        },
+        {
+          attribute: 'Height',
+          info: this.player.height,
+        },
+        {
+          attribute: 'Weight',
+          info: this.player.weight,
+        },
+        {
+          attribute: 'Foot',
+          info: this.player.foot,
+        },
+        {
+          attribute: 'Position',
+          info: this.player.broadPosition,
+        },
+      ]
+    }
+  },
 
   methods: {
     fetchData (id) {

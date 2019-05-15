@@ -1,3 +1,7 @@
+const Player = () => import('pages/Player.vue')
+// const Footer = () => import('components/Footer.vue')
+// const Teammates = () => import('pages/Teammates.vue')
+const Teammates = () => import('../components/Teammates.vue')
 
 const routes = [
   {
@@ -11,7 +15,7 @@ const routes = [
     path: '/players/:id',
     component: () => import('layouts/ID.vue'),
     children: [
-      { path: '', component: () => import('pages/Player.vue'), name: 'player' }
+      { path: '', components: { default: Player, helper: Teammates }, name: 'player' }
     ]
   }
 ]

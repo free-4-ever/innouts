@@ -40,7 +40,7 @@
         <q-btn-dropdown split flat label="Premier League" to="" color="" icon="folder" outline rounded glossy >
           <!-- dropdown content -->
           <q-list link>
-            <q-item>
+            <q-item dense>
               <q-item-side icon="folder" inverted color="primary" />
               <q-item-main>
                 <q-item-tile label>Item</q-item-tile>
