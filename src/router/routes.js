@@ -1,23 +1,33 @@
-const Player = () => import('pages/Player.vue')
+// const Player = () => import('pages/Player.vue')
 // const Footer = () => import('components/Footer.vue')
 // const Teammates = () => import('pages/Teammates.vue')
-const Teammates = () => import('../components/Teammates.vue')
+// const Teammates = () => import('components/Teammates.vue')
+const ID = () => import('pages/ID.vue')
 
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/Index.vue') },
+      {
+        path: 'players/:id',
+        component: () => ID,
+        // children: [
+        //   { path: '', components: { default: Player, helper: Teammates }, name: 'player' }
+        // ]
+      },
+      // next path
+
     ]
   },
-  {
-    path: '/players/:id',
-    component: () => import('layouts/ID.vue'),
-    children: [
-      { path: '', components: { default: Player, helper: Teammates }, name: 'player' }
-    ]
-  }
+  // {
+  //   path: '/players/:id',
+  //   component: () => import('layouts/ID.vue'),
+  //   children: [
+  //     { path: '', components: { default: Player, helper: Teammates }, name: 'player' }
+  //   ]
+  // }
 ]
 
 // Always leave this as last one

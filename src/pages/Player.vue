@@ -150,11 +150,12 @@ export default {
     // ]
   },
 
-  // created: function () {
-  //   let vm = this
-  //   vm.$axios.get('http://innouts.test/api/players/' + this.$route.params.id)
-  //     .then(response => (vm.player = response.data))
-  // },
+  created: function () {
+    // let vm = this
+    // vm.$axios.get('http://innouts.test/api/players/' + this.$route.params.id)
+    //   .then(response => (vm.player = response.data))
+    this.$emit('sendView', ['hhh lpR fff', false, true])
+  },
 
   watch: {
     // '$route' (to, from) {

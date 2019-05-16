@@ -20,6 +20,15 @@
 
 <script>
 export default {
-  name: 'PageIndex'
+  name: 'PageIndex',
+
+  data: () => ({
+
+  }),
+
+  created: function () {
+    this.$emit('sendView', ['hhh lpR fff', true, true])
+  }
+
 }
 </script>
