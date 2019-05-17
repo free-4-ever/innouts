@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-scroll-area class="fit q-pa-sm">
+    <!-- <q-scroll-area class="fit q-pa-sm"> -->
       <q-list
         no-border
         link
@@ -12,12 +12,8 @@
           <q-item-side icon="perm_identity" />
           <q-item-main :label="mate" />
         </q-item>
-        <!-- <q-item @click.native="openURL('https://github.com/quasarframework/')">
-          <q-item-side icon="code" />
-          <q-item-main label="GitHub" sublabel="github.com/quasarframework" />
-        </q-item> -->
       </q-list>
-    </q-scroll-area>
+    <!-- </q-scroll-area> -->
   </div>
 </template>
 
@@ -26,7 +22,7 @@ export default {
   name: 'TeammatesColumn',
 
   data: () => ({
-
+    // teammates: ['Joe', 'Jack']
   }),
 
   props: {

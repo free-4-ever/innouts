@@ -12,7 +12,8 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       {
         path: 'players/:id',
-        component: () => ID,
+        component: ID,
+        // name: 'player'
         // children: [
         //   { path: '', components: { default: Player, helper: Teammates }, name: 'player' }
         // ]
