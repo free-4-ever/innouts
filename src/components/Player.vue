@@ -28,13 +28,15 @@
         </div>  <!-- children will default to 'col'  -->
         <div class="col-sm-8">
             <q-table
-              v-model="customTable"
+              :pagination.sync="pagination"
                title="ID Card"
                :data="tableData"
                :columns="columns"
                separator="none"
                row-key="name"
                hide-header
+               hide-bottom
+               rows-per-page='10'
             />
         </div>
       </div>
@@ -92,6 +94,9 @@ export default {
     ],
     ratingModel: 1,
     tableData: [],
+    pagination: {
+      rowsPerPage: 8,
+    }
 
   }),
 
